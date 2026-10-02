@@ -49,7 +49,7 @@ jobs:
             -e ENGINE=mongodb -e WORKLOAD=demo -e HOST=demo.ns.svc.cluster.local -e PORT=27017 \
             -e DATABASE=app -e APP_USER=app -e ADMIN_USER=root -e BASE_PATH=/ns/mongodb/demo/ \
             --read-only db-console:smoke
-          for attempt in $(seq 1 20); do
+          for _ in $(seq 1 20); do
             curl -fsS http://127.0.0.1:8080/ns/mongodb/demo/healthz && break
             sleep 1
           done
